@@ -1,0 +1,57 @@
+/* =============================================================
+   RTL OVERRIDES — Achdut B'Ahavah
+   Loaded only when achdut_is_rtl_page() returns true (Hebrew).
+   Uses [dir="rtl"] scope for specificity.
+   ============================================================= */
+
+/* Flip directional icons (arrows, chevrons) */
+[dir="rtl"] .arrow-icon,
+[dir="rtl"] .chevron-icon {
+  transform: scaleX(-1);
+}
+
+/* Nav underline animation origin flips automatically via logical properties,
+   but the transform-origin needs explicit override for older browsers */
+[dir="rtl"] .primary-nav__link::after {
+  transform-origin: inline-start;
+}
+[dir="rtl"] .primary-nav__link:hover::after,
+[dir="rtl"] .primary-nav__link.current-menu-item::after {
+  transform-origin: inline-end;
+}
+
+/* Hero text alignment */
+[dir="rtl"] .hero__content {
+  text-align: center; /* stays centered for hero */
+}
+
+/* Stages track: flip arrow direction */
+[dir="rtl"] .stage-item:not(:last-child)::after {
+  inset-inline-end: auto;
+  inset-inline-start: 0;
+  background: linear-gradient(270deg, var(--color-accent), var(--color-border));
+}
+
+/* Mobile nav slides from the correct side */
+[dir="rtl"] .primary-nav {
+  transform: translateX(-100%);
+}
+
+/* Border-inline-start adjustments (logical properties handle most, this is for legacy) */
+[dir="rtl"] .workshops-teaser__promise {
+  border-inline-start: none;
+  border-inline-end: 3px solid var(--color-accent);
+  padding-inline-start: 0;
+  padding-inline-end: var(--space-6);
+}
+
+/* Promise items: border on correct side */
+[dir="rtl"] .promise-item {
+  border-inline-start: none;
+  border-inline-end: 4px solid var(--color-accent);
+}
+
+/* Footer layout mirrors */
+[dir="rtl"] .footer-brand__tagline {
+  text-align: right;
+}

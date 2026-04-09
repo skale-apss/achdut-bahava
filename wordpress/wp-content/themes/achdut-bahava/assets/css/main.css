@@ -1,0 +1,13 @@
+/* =============================================================
+   ACHDUT B'AHAVAH — Main Stylesheet
+   Imports all partials in order. No styles live here directly.
+   ============================================================= */
+
+@import url('src/_tokens.css');
+@import url('src/_reset.css');
+@import url('src/_typography.css');
+@import url('src/_layout.css');
+@import url('src/_components.css');
+@import url('src/_header.css');
+@import url('src/_footer.css');
+@import url('src/_pages.css');

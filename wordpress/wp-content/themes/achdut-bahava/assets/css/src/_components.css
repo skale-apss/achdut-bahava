@@ -1,0 +1,332 @@
+/* =============================================
+   COMPONENTS — Buttons, Cards, Forms, Badges
+   ============================================= */
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-8);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Primary: gold fill */
+.btn--primary {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-primary-dark);
+}
+.btn--primary:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* Secondary: outlined white (for use on dark backgrounds) */
+.btn--secondary {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.btn--secondary:hover {
+  background-color: rgba(255,255,255,0.12);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Outline primary (for use on light backgrounds) */
+.btn--outline {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.btn--outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Ghost: text link styled as button */
+.btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-primary);
+  padding-inline: 0;
+}
+.btn--ghost:hover { color: var(--color-accent); }
+
+/* Sizes */
+.btn--lg {
+  padding: var(--space-4) var(--space-10);
+  font-size: var(--text-lg);
+}
+.btn--sm {
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+}
+
+/* CTA group */
+.cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+/* --- Cards --- */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.card__body {
+  padding: var(--space-6);
+}
+
+.card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  margin-block-end: var(--space-3);
+  color: var(--color-primary);
+}
+
+.card__text {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-block-end: var(--space-4);
+}
+
+/* Value / pillar card */
+.pillar-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  border-block-start: 4px solid var(--color-accent);
+  transition: background-color var(--transition-normal);
+}
+.pillar-card:hover {
+  background: rgba(255,255,255,0.14);
+}
+
+.pillar-card__icon {
+  font-size: var(--text-4xl);
+  margin-block-end: var(--space-4);
+  display: block;
+  line-height: 1;
+}
+
+.pillar-card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  margin-block-end: var(--space-2);
+}
+
+.pillar-card__text {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.75);
+  line-height: var(--leading-relaxed);
+}
+
+/* Track / engagement card */
+.track-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  text-align: center;
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal), border-color var(--transition-normal);
+}
+.track-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+}
+
+.track-card__icon {
+  font-size: var(--text-5xl);
+  margin-block-end: var(--space-4);
+  display: block;
+  line-height: 1;
+}
+
+.track-card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  margin-block-end: var(--space-2);
+}
+
+.track-card__text {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-block-end: var(--space-6);
+  line-height: var(--leading-relaxed);
+}
+
+/* Metric / stat card */
+.metric-card {
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+}
+
+.metric-card__number {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
+  display: block;
+}
+
+.metric-card__label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-block-start: var(--space-2);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Forms --- */
+.form-group {
+  margin-block-end: var(--space-5);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+  margin-block-end: var(--space-2);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background: var(--color-white);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  line-height: var(--leading-normal);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(26,58,107,0.15);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Checkbox */
+.form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+.form-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-block-start: 2px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Section header */
+.section-header {
+  margin-block-end: var(--space-12);
+}
+.section-header__eyebrow {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-block-end: var(--space-3);
+}
+.section-header__title {
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  line-height: var(--leading-tight);
+  margin-block-end: var(--space-4);
+}
+.section-header__text {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 65ch;
+  line-height: var(--leading-relaxed);
+}
+
+/* Promise / blockquote */
+.promise-item {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-lg);
+  border-inline-start: 4px solid var(--color-accent);
+}
+.promise-item__number {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+}
+.promise-item__text {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+}

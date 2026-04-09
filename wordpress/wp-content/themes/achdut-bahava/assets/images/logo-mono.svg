@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" role="img" aria-label="Achdut B'Ahavah">
+  <title>Achdut B'Ahavah</title>
+  <path d="M30 48 C18 38 8 30 8 20 C8 13 13 8 20 8 C24 8 28 10 30 14 C32 10 36 8 40 8 C47 8 52 13 52 20 C52 30 42 38 30 48Z"
+        fill="currentColor"/>
+  <circle cx="30" cy="20" r="6" fill="currentColor" opacity="0.5"/>
+  <text x="30" y="25" font-family="'Noto Serif Hebrew', serif" font-size="12" font-weight="700"
+        fill="white" text-anchor="middle" dominant-baseline="middle" opacity="0.95">א</text>
+  <text x="68" y="24" font-family="'Noto Serif Hebrew', 'Noto Serif', serif" font-size="18"
+        font-weight="700" fill="currentColor" dominant-baseline="middle">Achdut</text>
+  <text x="68" y="44" font-family="'Noto Serif Hebrew', 'Noto Serif', serif" font-size="14"
+        font-weight="600" fill="currentColor" opacity="0.75" dominant-baseline="middle">B'Ahavah</text>
+  <text x="68" y="58" font-family="'Noto Sans Hebrew', 'Noto Sans', sans-serif" font-size="10"
+        font-weight="400" fill="currentColor" opacity="0.6" dominant-baseline="middle">אחדות באהבה</text>
+</svg>

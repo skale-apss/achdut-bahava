@@ -1,0 +1,34 @@
+# WordPress core — installed by Docker, not committed
+wordpress/wp-admin/
+wordpress/wp-includes/
+wordpress/wp-*.php
+wordpress/index.php
+wordpress/xmlrpc.php
+wordpress/license.txt
+wordpress/readme.html
+wordpress/wp-config.php
+wordpress/wp-config-local.php
+
+# Plugins — installed via WP-CLI script
+wordpress/wp-content/plugins/*
+!wordpress/wp-content/plugins/.gitkeep
+
+# Uploads
+wordpress/wp-content/uploads/
+
+# Environment & local overrides
+.env
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Node (if build tools added later)
+node_modules/
+dist/
+
+# Logs
+*.log

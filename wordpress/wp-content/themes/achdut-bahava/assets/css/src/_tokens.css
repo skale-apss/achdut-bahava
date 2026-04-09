@@ -1,0 +1,118 @@
+/* =============================================================
+   DESIGN TOKENS — Achdut B'Ahavah
+   All CSS custom properties. Every other stylesheet imports these.
+   ============================================================= */
+
+:root {
+  /* --- Colors --- */
+  --color-primary:         #1A3A6B;  /* Deep sapphire */
+  --color-primary-light:   #2E5FA3;  /* Interactive / hover */
+  --color-primary-dark:    #0F2244;  /* Deep pressed state */
+  --color-accent:          #D4A017;  /* Warm gold */
+  --color-accent-hover:    #E8B830;  /* Gold hover */
+  --color-accent-dark:     #A67C10;  /* Gold pressed */
+  --color-secondary:       #C94040;  /* Coral red */
+  --color-secondary-light: #E06060;  /* Coral hover */
+  --color-secondary-dark:  #A02F2F;  /* Coral pressed */
+
+  --color-surface:         #FDF8F0;  /* Warm off-white — default background */
+  --color-surface-alt:     #F5EDD8;  /* Warm parchment — alternating sections */
+  --color-surface-dark:    #EDE2CC;  /* Darker parchment */
+
+  --color-text-primary:    #1C1C1C;
+  --color-text-secondary:  #4A4A4A;
+  --color-text-muted:      #7A7A7A;
+  --color-text-inverse:    #FFFFFF;
+
+  --color-border:          #DDD0B8;
+  --color-border-light:    #EDE6D6;
+
+  --color-white:           #FFFFFF;
+  --color-black:           #000000;
+
+  --color-hero-overlay:    rgba(26, 58, 107, 0.72);
+  --color-overlay-dark:    rgba(0, 0, 0, 0.5);
+
+  /* --- Typography --- */
+  --font-heading: 'Noto Serif Hebrew', 'Noto Serif', Georgia, serif;
+  --font-body:    'Noto Sans Hebrew', 'Noto Sans', system-ui, sans-serif;
+
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.25rem;    /* 36px */
+  --text-5xl:  3rem;       /* 48px */
+  --text-6xl:  3.75rem;    /* 60px */
+  --text-7xl:  4.5rem;     /* 72px */
+
+  --leading-tight:   1.2;
+  --leading-snug:    1.375;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;   /* Hebrew needs extra space */
+  --leading-loose:   2;
+
+  --weight-light:    300;
+  --weight-normal:   400;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* --- Spacing --- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* --- Layout --- */
+  --container-max:    1200px;
+  --container-wide:   1400px;
+  --container-narrow: 800px;
+  --container-pad:    clamp(1rem, 4vw, 2rem);
+
+  --section-pad-y: clamp(var(--space-12), 6vw, var(--space-20));
+
+  /* --- Borders & Radius --- */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  --border-width:       1px;
+  --border-width-thick: 3px;
+
+  /* --- Shadows --- */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.14), 0 4px 8px rgba(0,0,0,0.08);
+  --shadow-xl:  0 16px 48px rgba(0,0,0,0.16);
+
+  /* --- Transitions --- */
+  --transition-fast:   150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* --- Z-index --- */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-dropdown: 100;
+  --z-sticky:  200;
+  --z-overlay: 300;
+  --z-modal:   400;
+
+  /* --- Header --- */
+  --header-height:        72px;
+  --header-height-mobile: 60px;
+}
