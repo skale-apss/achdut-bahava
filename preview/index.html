@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achdut B'Ahavah — Become the Solution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+Hebrew:wght@300;400;600&family=Noto+Serif:ital,wght@0,600;0,700&family=Noto+Serif+Hebrew:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans Hebrew', 'Noto Sans', system-ui, sans-serif; font-size: 16px; color: #1C1C1C; background: #FDF8F0; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  ul { list-style: none; }
+  a { text-decoration: none; color: inherit; }
+  button { cursor: pointer; background: none; border: none; font: inherit; }
+
+  /* ── TOKENS ── */
+  :root {
+    --primary: #1A3A6B;
+    --primary-light: #2E5FA3;
+    --primary-dark: #0F2244;
+    --accent: #D4A017;
+    --accent-hover: #E8B830;
+    --secondary: #C94040;
+    --surface: #FDF8F0;
+    --surface-alt: #F5EDD8;
+    --surface-dark: #EDE2CC;
+    --text: #1C1C1C;
+    --text-2: #4A4A4A;
+    --text-muted: #7A7A7A;
+    --border: #DDD0B8;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.10);
+    --shadow-md: 0 4px 12px rgba(0,0,0,.12);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,.14);
+    --radius: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+  .container--narrow { max-width: 800px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+  .section { padding: clamp(4rem, 6vw, 5rem) 0; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 32px; font-family: inherit; font-size: 1rem; font-weight: 600;
+    border-radius: var(--radius-full); border: 2px solid transparent;
+    cursor: pointer; transition: all 150ms ease; white-space: nowrap; line-height: 1;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn--primary { background: var(--accent); border-color: var(--accent); color: var(--primary-dark); }
+  .btn--primary:hover { background: var(--accent-hover); box-shadow: var(--shadow-md); }
+  .btn--secondary { background: transparent; border-color: white; color: white; }
+  .btn--secondary:hover { background: rgba(255,255,255,.12); }
+  .btn--outline { background: transparent; border-color: var(--primary); color: var(--primary); }
+  .btn--outline:hover { background: var(--primary); color: white; }
+  .btn--lg { padding: 18px 40px; font-size: 1.1rem; }
+  .btn--sm { padding: 8px 20px; font-size: 0.875rem; }
+  .btn--white { background: white; border-color: white; color: var(--secondary); }
+
+  /* ── HEADER ── */
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; height: 72px; z-index: 200;
+    transition: background 250ms ease, box-shadow 250ms ease;
+  }
+  .site-header.transparent { background: transparent; }
+  .site-header.solid { background: white; box-shadow: var(--shadow-sm); }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem,4vw,2rem);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mark {
+    width: 38px; height: 38px; flex-shrink: 0;
+    background: var(--primary); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Serif Hebrew', serif; font-size: 17px; font-weight: 700; color: white;
+    position: relative;
+  }
+  .logo-mark::after {
+    content: ''; position: absolute; width: 12px; height: 12px;
+    background: var(--accent); border-radius: 50%; bottom: -2px; right: -2px;
+  }
+  .logo-text { line-height: 1.2; }
+  .logo-text strong { display: block; font-family: 'Noto Serif Hebrew','Noto Serif',serif; font-size: 1rem; font-weight: 700; color: white; }
+  .logo-text span { font-size: 0.7rem; color: rgba(255,255,255,.65); font-weight: 400; }
+  .solid .logo-text strong { color: var(--primary); }
+  .solid .logo-text span { color: var(--text-muted); }
+
+  .nav-list { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-link { font-weight: 600; color: rgba(255,255,255,.9); font-size: 0.95rem; transition: color 150ms; }
+  .nav-link:hover { color: var(--accent); }
+  .solid .nav-link { color: var(--text); }
+  .solid .nav-link:hover { color: var(--accent); }
+
+  .lang-switch { display: flex; gap: 6px; }
+  .lang-btn {
+    padding: 4px 10px; font-size: 0.7rem; font-weight: 700; border-radius: var(--radius-full);
+    border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.65);
+    cursor: pointer; text-transform: uppercase; letter-spacing: .05em; transition: all 150ms;
+  }
+  .lang-btn:hover, .lang-btn.active { background: var(--accent); border-color: var(--accent); color: var(--primary-dark); }
+  .solid .lang-btn { border-color: var(--border); color: var(--text-muted); }
+  .solid .lang-btn:hover, .solid .lang-btn.active { background: var(--accent); border-color: var(--accent); color: var(--primary-dark); }
+
+  .header-nav { display: flex; align-items: center; gap: 32px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; padding: 120px 0 80px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #8B2020 100%);
+  }
+  .hero::before {
+    content: ''; position: absolute; width: 700px; height: 700px;
+    background: rgba(255,255,255,.05); border-radius: 50%;
+    bottom: -200px; right: -150px;
+  }
+  .hero::after {
+    content: ''; position: absolute; width: 350px; height: 350px;
+    background: rgba(255,255,255,.04); border-radius: 50%;
+    top: -80px; left: -80px;
+  }
+  .hero-content {
+    position: relative; z-index: 1; text-align: center;
+    max-width: 860px; margin: 0 auto; padding: 0 clamp(1rem,4vw,2rem);
+  }
+  .hero-eyebrow {
+    display: inline-block; font-size: 0.8rem; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+    padding: 8px 18px; border: 1px solid rgba(212,160,23,.4); border-radius: var(--radius-full);
+  }
+  .hero h1 {
+    font-family: 'Noto Serif Hebrew','Noto Serif',serif;
+    font-size: clamp(3rem, 7vw, 5rem); font-weight: 700; color: white;
+    line-height: 1.1; margin-bottom: 24px; letter-spacing: -.01em;
+  }
+  .hero h2 {
+    font-family: 'Noto Sans Hebrew','Noto Sans',sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 400;
+    color: rgba(255,255,255,.85); line-height: 1.6; max-width: 58ch;
+    margin: 0 auto 40px; letter-spacing: 0;
+  }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 24px; }
+  .hero-donate { font-size: 0.9rem; color: rgba(255,255,255,.55); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-donate:hover { color: var(--accent); }
+  .scroll-arrow {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,.35); font-size: 1.5rem;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+  /* ── SECTION HEADER ── */
+  .section-header { margin-bottom: 48px; }
+  .section-header.center { text-align: center; }
+  .eyebrow {
+    display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .section-header h2 {
+    font-family: 'Noto Serif Hebrew','Noto Serif',serif;
+    font-size: clamp(1.875rem, 4vw, 3rem); font-weight: 700; line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-header h2.white { color: white; }
+  .section-header p { font-size: 1.1rem; color: var(--text-2); line-height: 1.7; max-width: 65ch; }
+  .section-header.center p { margin: 0 auto; }
+
+  /* ── PROBLEM ── */
+  .problem { background: var(--primary); color: white; text-align: center; }
+  .problem .section-header h2 { color: white; }
+  .problem-lead {
+    font-size: clamp(1.1rem, 2vw, 1.3rem); color: rgba(255,255,255,.88);
+    line-height: 1.75; max-width: 72ch; margin: 0 auto 48px;
+  }
+  .impact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 48px; }
+  .impact-card {
+    background: rgba(255,255,255,.08); border-radius: var(--radius-lg);
+    padding: 28px 24px; border-top: 3px solid var(--accent);
+  }
+  .impact-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+  .impact-label { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 8px; }
+  .impact-desc { font-size: 0.875rem; color: rgba(255,255,255,.65); line-height: 1.7; }
+  .problem-closing { font-size: 1.2rem; font-style: italic; color: var(--accent); max-width: 55ch; margin: 0 auto; }
+
+  /* ── VISION / MISSION ── */
+  .vm { background: var(--surface-alt); }
+  .vm-grid { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius-xl); overflow: hidden; }
+  .vm-box { padding: clamp(2rem,5vw,4rem); }
+  .vm-vision { background: var(--surface-alt); }
+  .vm-mission { background: var(--surface-dark); }
+  .vm-sub { display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #A67C10; margin-bottom: 12px; }
+  .vm-box h3 { font-family: 'Noto Serif Hebrew','Noto Serif',serif; font-size: clamp(1.5rem,3vw,2rem); color: var(--primary); margin-bottom: 16px; }
+  .vm-box p { color: var(--text-2); line-height: 1.75; font-size: 0.975rem; }
+
+  /* ── OUR WHY ── */
+  .why { background: var(--surface); }
+  .why-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+  .why-card {
+    padding: 24px 16px; background: var(--surface-alt); border-radius: var(--radius-lg);
+    border: 1px solid var(--border); transition: all 200ms;
+  }
+  .why-card:hover { border-color: var(--accent); background: white; transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .why-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; background: var(--primary); color: white;
+    border-radius: 50%; font-weight: 700; font-size: 0.8rem; margin-bottom: 16px;
+  }
+  .why-text { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; font-weight: 600; }
+
+  /* ── VALUES ── */
+  .values { background: var(--primary); color: white; }
+  .values .eyebrow { color: var(--accent); }
+  .values-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+  .pillar {
+    background: rgba(255,255,255,.08); border-radius: var(--radius-lg);
+    padding: 24px 20px; border-top: 4px solid var(--accent);
+    transition: background 200ms;
+  }
+  .pillar:hover { background: rgba(255,255,255,.13); }
+  .pillar-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+  .pillar-title { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 8px; }
+  .pillar-text { font-size: 0.8rem; color: rgba(255,255,255,.7); line-height: 1.7; }
+
+  /* ── TRACKS ── */
+  .tracks { background: var(--surface); }
+  .tracks-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+  .track-card {
+    background: white; border-radius: var(--radius-lg); padding: 32px 24px;
+    text-align: center; border: 1px solid #EDE6D6; box-shadow: var(--shadow-sm);
+    transition: all 200ms;
+  }
+  .track-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--accent); }
+  .track-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
+  .track-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+  .track-text { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; margin-bottom: 24px; }
+
+  /* ── WORKSHOPS TEASER ── */
+  .ws-teaser {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+  }
+  .ws-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .ws-eyebrow { color: var(--accent); }
+  .ws-inner h2 { font-family: 'Noto Serif Hebrew','Noto Serif',serif; font-size: clamp(2rem,4vw,3rem); font-weight: 700; color: white; margin-bottom: 20px; }
+  .ws-inner p { color: rgba(255,255,255,.8); font-size: 1.1rem; line-height: 1.7; margin-bottom: 32px; }
+  .ws-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .ws-quote {
+    font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,.85); line-height: 1.8;
+    padding-left: 24px; border-left: 3px solid var(--accent);
+  }
+  .ws-quote footer { margin-top: 16px; font-size: 0.8rem; color: rgba(255,255,255,.55); font-style: normal; }
+
+  /* ── METRICS ── */
+  .metrics { background: var(--surface-alt); }
+  .metrics-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .metric { text-align: center; padding: 32px 24px; }
+  .metric-icon { font-size: 2.5rem; display: block; margin-bottom: 12px; }
+  .metric-num {
+    font-family: 'Noto Serif Hebrew','Noto Serif',serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--primary);
+    line-height: 1; display: block; margin-bottom: 8px;
+  }
+  .metric-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner { background: var(--secondary); color: white; text-align: center; padding: 80px 0; }
+  .cta-banner h2 { font-family: 'Noto Serif Hebrew','Noto Serif',serif; font-size: clamp(2rem,4vw,3rem); color: white; margin-bottom: 16px; }
+  .cta-banner p { font-size: 1.1rem; color: rgba(255,255,255,.85); max-width: 55ch; margin: 0 auto 40px; line-height: 1.7; }
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  .site-footer { background: var(--primary-dark); color: rgba(255,255,255,.75); padding: 64px 0 32px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+  .footer-logo-mark {
+    width: 42px; height: 42px; background: rgba(255,255,255,.1); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Serif Hebrew',serif; font-size: 18px; color: white; font-weight: 700;
+    margin-bottom: 16px; position: relative;
+  }
+  .footer-logo-mark::after {
+    content: ''; position: absolute; width: 10px; height: 10px;
+    background: var(--accent); border-radius: 50%; bottom: -1px; right: -1px;
+  }
+  .footer-tagline { font-size: 0.875rem; color: rgba(255,255,255,.55); line-height: 1.7; max-width: 26ch; }
+  .footer-col-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: white; margin-bottom: 16px; }
+  .footer-links { display: flex; flex-direction: column; gap: 8px; }
+  .footer-links a { font-size: 0.875rem; color: rgba(255,255,255,.6); transition: color 150ms; }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,.35); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .why-grid, .values-grid { grid-template-columns: repeat(3,1fr); }
+    .tracks-grid { grid-template-columns: repeat(2,1fr); }
+    .metrics-grid { grid-template-columns: repeat(3,1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .impact-grid, .vm-grid, .ws-inner { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .hero-ctas .btn { width: 100%; max-width: 320px; }
+    .header-nav { gap: 16px; }
+    .nav-list { display: none; }
+  }
+  @media (max-width: 480px) {
+    .why-grid, .values-grid, .tracks-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="site-header transparent" id="hdr">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">א</div>
+      <div class="logo-text">
+        <strong>Achdut B'Ahavah</strong>
+        <span>אחדות באהבה</span>
+      </div>
+    </a>
+    <div class="header-nav">
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="workshops.html" class="nav-link">Workshops</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-btn active">EN</button>
+        <button class="lang-btn">עב</button>
+        <button class="lang-btn">RU</button>
+      </div>
+      <a href="#" class="btn btn--primary btn--sm">Donate</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">אחדות באהבה &nbsp;·&nbsp; Unity in Love</span>
+    <h1>Become the solution</h1>
+    <h2>Changing hearts and minds — without compromising on your values</h2>
+    <div class="hero-ctas">
+      <a href="workshops.html" class="btn btn--primary btn--lg">Join a Workshop</a>
+      <a href="#tracks" class="btn btn--secondary btn--lg">Get Involved</a>
+    </div>
+    <a href="#" class="hero-donate">Donate →</a>
+  </div>
+  <div class="scroll-arrow">↓</div>
+</section>
+
+<!-- ── PROBLEM ── -->
+<section class="problem section" id="problem">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow">The Challenge</span>
+      <h2 class="white">A divided people.<br>The cost is no longer tolerable.</h2>
+    </div>
+    <p class="problem-lead">
+      It is a common understanding amongst Jews globally that we are a divided people — divisions that have caused detrimental impact to our economy, political system, national security, and our physical and spiritual wellbeing across generations.
+    </p>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <span class="impact-icon">🏛️</span>
+        <div class="impact-label">Political Instability</div>
+        <p class="impact-desc">Internal divisions undermine unified national leadership and policy-making at every level.</p>
+      </div>
+      <div class="impact-card">
+        <span class="impact-icon">🛡️</span>
+        <div class="impact-label">National Security</div>
+        <p class="impact-desc">A fractured society is more vulnerable. As the saying goes — divide and conquer.</p>
+      </div>
+      <div class="impact-card">
+        <span class="impact-icon">💰</span>
+        <div class="impact-label">Economic Cost</div>
+        <p class="impact-desc">The cost is measurable in both human life and money. The alternative is no longer sustainable.</p>
+      </div>
+    </div>
+    <p class="problem-closing">"As the saying goes: divide and conquer. To that, we say — <strong>no longer.</strong>"</p>
+  </div>
+</section>
+
+<!-- ── VISION / MISSION ── -->
+<section class="vm section" id="vision">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow">Purpose</span>
+      <h2>Why We Exist</h2>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-box vm-vision">
+        <span class="vm-sub">Vision</span>
+        <h3>A unified Jewish world</h3>
+        <p>Imagine what can be achieved in a world where global unity exists between all Jews — from across all its diverse spectrums — through active intention, mutual respect, and valued understanding of each other's diverse perspectives, so they can all co-exist and flourish without compromise.</p>
+      </div>
+      <div class="vm-box vm-mission">
+        <span class="vm-sub">Mission</span>
+        <h3>100 cities. One commitment.</h3>
+        <p>Establish weekly workshop meetups in 100 cities throughout Israel and the world, where Jews can come together to build and share safe bridges of respect, understanding, and love for each other's diverse perspectives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OUR WHY ── -->
+<section class="why section" id="why">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow">Our Why</span>
+      <h2>Why This Matters</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <p class="why-text">Impact generations to come</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <p class="why-text">Your home where your perspective can be heard and understood</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <p class="why-text">Get passionate about the same things</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <p class="why-text">Become part of the solution</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">05</div>
+        <p class="why-text">Because if we don't — the cost is too high</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VALUES ── -->
+<section class="values section" id="values">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow" style="color:var(--accent)">Core Values</span>
+      <h2 class="white">Our Value Pillars</h2>
+      <p style="color:rgba(255,255,255,.7);margin:0 auto;">These pillars are explained in our meeting rules guide, ensuring the unwavering emotional safety and wellbeing for all.</p>
+    </div>
+    <div class="values-grid">
+      <div class="pillar">
+        <span class="pillar-icon">🛡️</span>
+        <div class="pillar-title">Emotional Safety</div>
+        <p class="pillar-text">Every voice is honoured in a space where vulnerability is protected.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🤝</span>
+        <div class="pillar-title">Mutual Respect</div>
+        <p class="pillar-text">We honour each person's path, regardless of where they stand.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🔍</span>
+        <div class="pillar-title">Seek to Understand</div>
+        <p class="pillar-text">We listen with empathic curiosity before seeking to be understood.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">⚖️</span>
+        <div class="pillar-title">Shared Accountability</div>
+        <p class="pillar-text">We hold ourselves and each other to our collective promises.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">💡</span>
+        <div class="pillar-title">Facts Over Opinions</div>
+        <p class="pillar-text">We distinguish facts from opinions and speak through personal experience only.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRACKS ── -->
+<section class="tracks section" id="tracks">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow">Stronger Together</span>
+      <h2>Discover Your Path</h2>
+      <p>Diverse opportunities to connect, learn, and make a difference. Four engagement tracks designed to foster community and drive meaningful change.</p>
+    </div>
+    <div class="tracks-grid">
+      <div class="track-card">
+        <span class="track-icon">🤝</span>
+        <div class="track-title">Social Events</div>
+        <p class="track-text">Connecting with Israel together — shared experiences that build real bonds across communities.</p>
+        <a href="#" class="btn btn--outline btn--sm">Explore Events</a>
+      </div>
+      <div class="track-card">
+        <span class="track-icon">🇮🇱</span>
+        <div class="track-title">Impact</div>
+        <p class="track-text">Helping Israeli society — direct action projects that strengthen the fabric of our shared home.</p>
+        <a href="#" class="btn btn--outline btn--sm">Make an Impact</a>
+      </div>
+      <div class="track-card">
+        <span class="track-icon">📚</span>
+        <div class="track-title">Education</div>
+        <p class="track-text">Learning together — exploring our shared history, traditions, and diverse paths through structured study.</p>
+        <a href="#" class="btn btn--outline btn--sm">Start Learning</a>
+      </div>
+      <div class="track-card">
+        <span class="track-icon">🌍</span>
+        <div class="track-title">Ambassador Program</div>
+        <p class="track-text">For those passionate about advancing our mission — help establish new groups and expand our reach.</p>
+        <a href="workshops.html" class="btn btn--outline btn--sm">Become an Ambassador</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORKSHOPS TEASER ── -->
+<section class="ws-teaser section">
+  <div class="container">
+    <div class="ws-inner">
+      <div>
+        <span class="eyebrow ws-eyebrow">Our Workshops</span>
+        <h2>Where change begins</h2>
+        <p>Weekly gatherings across Israel and beyond. Small groups. Real conversations. Every voice heard.</p>
+        <div class="ws-ctas">
+          <a href="workshops.html" class="btn btn--primary btn--lg">Join a Workshop</a>
+          <a href="workshops.html" class="btn btn--secondary">Learn More</a>
+        </div>
+      </div>
+      <blockquote class="ws-quote">
+        "We meet each week with the shared commitment to listen deeply, seek to understand with empathic curiosity, and speak respectfully, before seeking to be understood."
+        <footer>— The Achdut B'Ahavah Meeting Promise</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ── METRICS ── -->
+<section class="metrics section">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow">Our Impact</span>
+      <h2>How We Measure Success</h2>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric">
+        <span class="metric-icon">👥</span>
+        <span class="metric-num">—</span>
+        <span class="metric-label">Total Members (Ambassadors)</span>
+      </div>
+      <div class="metric">
+        <span class="metric-icon">🏘️</span>
+        <span class="metric-num">—</span>
+        <span class="metric-label">Total Groups</span>
+      </div>
+      <div class="metric">
+        <span class="metric-icon">📈</span>
+        <span class="metric-num">—</span>
+        <span class="metric-label">New Groups This Quarter</span>
+      </div>
+      <div class="metric">
+        <span class="metric-icon">🗺️</span>
+        <span class="metric-num">—</span>
+        <span class="metric-label">Cities Reached</span>
+      </div>
+      <div class="metric">
+        <span class="metric-icon">💬</span>
+        <span class="metric-num">—</span>
+        <span class="metric-label">Perspectives Shifted</span>
+      </div>
+      <div class="metric">
+        <span class="metric-icon">🎉</span>
+        <span class="metric-num">—</span>
+        <span class="metric-label">Shared Events</span>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--text-muted);font-size:.875rem;margin-top:32px;">We are just getting started. Numbers update as new groups launch.</p>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to become the solution?</h2>
+    <p>Every week, Jews from across every spectrum of life sit together, listen deeply, and build something remarkable. Join them.</p>
+    <div class="cta-btns">
+      <a href="workshops.html" class="btn btn--secondary btn--lg" style="border-color:white;color:white">Join a Workshop</a>
+      <a href="#" class="btn btn--white btn--lg">Donate</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-mark">א</div>
+        <p class="footer-tagline">Uniting Jews across all spectrums — through mutual respect, empathic curiosity, and love.</p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,.35);margin-top:8px;">אחדות באהבה</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="workshops.html">Workshops</a>
+          <a href="#">Donate</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Get Involved</div>
+        <div class="footer-links">
+          <a href="workshops.html">Join a Workshop</a>
+          <a href="#tracks">Ambassador Program</a>
+          <a href="#">Donate</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="#">📍 Israel</a>
+          <a href="mailto:info@achdut-bahava.org">info@achdut-bahava.org</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Achdut B'Ahavah. All rights reserved.</p>
+      <div class="lang-switch">
+        <button class="lang-btn active" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.5)">EN</button>
+        <button class="lang-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.5)">עב</button>
+        <button class="lang-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.5)">RU</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) { hdr.classList.remove('transparent'); hdr.classList.add('solid'); }
+    else { hdr.classList.add('transparent'); hdr.classList.remove('solid'); }
+  }, {passive:true});
+</script>
+</body>
+</html>
