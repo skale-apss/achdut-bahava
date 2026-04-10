@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshops — Achdut B'Ahavah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+Hebrew:wght@300;400;600&family=Noto+Serif:ital,wght@0,600;0,700&family=Noto+Serif+Hebrew:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans Hebrew','Noto Sans',system-ui,sans-serif; font-size:16px; color:#1C1C1C; background:#FDF8F0; -webkit-font-smoothing:antialiased; }
+  img { display:block; max-width:100%; }
+  ul { list-style:none; }
+  a { text-decoration:none; color:inherit; }
+  button { cursor:pointer; background:none; border:none; font:inherit; }
+
+  :root {
+    --primary:#1A3A6B; --primary-light:#2E5FA3; --primary-dark:#0F2244;
+    --accent:#D4A017; --accent-hover:#E8B830;
+    --secondary:#C94040;
+    --surface:#FDF8F0; --surface-alt:#F5EDD8; --surface-dark:#EDE2CC;
+    --text:#1C1C1C; --text-2:#4A4A4A; --text-muted:#7A7A7A;
+    --border:#DDD0B8;
+    --shadow-sm:0 1px 3px rgba(0,0,0,.10);
+    --shadow-md:0 4px 12px rgba(0,0,0,.12);
+    --shadow-lg:0 8px 24px rgba(0,0,0,.14);
+    --radius:8px; --radius-lg:16px; --radius-xl:24px; --radius-full:9999px;
+  }
+
+  .container { max-width:1200px; margin:0 auto; padding:0 clamp(1rem,4vw,2rem); }
+  .container--narrow { max-width:760px; margin:0 auto; padding:0 clamp(1rem,4vw,2rem); }
+  .section { padding:clamp(4rem,6vw,5rem) 0; }
+
+  .btn {
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 32px; font-family:inherit; font-size:1rem; font-weight:600;
+    border-radius:var(--radius-full); border:2px solid transparent;
+    cursor:pointer; transition:all 150ms ease; white-space:nowrap; line-height:1;
+  }
+  .btn:hover { transform:translateY(-1px); }
+  .btn--primary { background:var(--accent); border-color:var(--accent); color:var(--primary-dark); }
+  .btn--primary:hover { background:var(--accent-hover); box-shadow:var(--shadow-md); }
+  .btn--secondary { background:transparent; border-color:white; color:white; }
+  .btn--outline { background:transparent; border-color:var(--primary); color:var(--primary); }
+  .btn--outline:hover { background:var(--primary); color:white; }
+  .btn--lg { padding:18px 40px; font-size:1.1rem; }
+  .btn--sm { padding:8px 20px; font-size:.875rem; }
+
+  /* HEADER */
+  .site-header {
+    position:fixed; top:0; left:0; right:0; height:72px; z-index:200;
+    background:white; box-shadow:var(--shadow-sm);
+  }
+  .header-inner {
+    display:flex; align-items:center; justify-content:space-between;
+    height:100%; max-width:1200px; margin:0 auto; padding:0 clamp(1rem,4vw,2rem);
+  }
+  .logo { display:flex; align-items:center; gap:10px; }
+  .logo-mark {
+    width:38px; height:38px; background:var(--primary); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Noto Serif Hebrew',serif; font-size:17px; font-weight:700; color:white;
+    position:relative;
+  }
+  .logo-mark::after {
+    content:''; position:absolute; width:12px; height:12px;
+    background:var(--accent); border-radius:50%; bottom:-2px; right:-2px;
+  }
+  .logo-text strong { display:block; font-family:'Noto Serif Hebrew','Noto Serif',serif; font-size:1rem; font-weight:700; color:var(--primary); }
+  .logo-text span { font-size:.7rem; color:var(--text-muted); }
+  .nav-list { display:flex; align-items:center; gap:32px; }
+  .nav-link { font-weight:600; color:var(--text); font-size:.95rem; transition:color 150ms; }
+  .nav-link:hover, .nav-link.active { color:var(--accent); }
+  .lang-switch { display:flex; gap:6px; }
+  .lang-btn {
+    padding:4px 10px; font-size:.7rem; font-weight:700; border-radius:var(--radius-full);
+    border:1px solid var(--border); color:var(--text-muted);
+    cursor:pointer; text-transform:uppercase; letter-spacing:.05em; transition:all 150ms;
+  }
+  .lang-btn:hover, .lang-btn.active { background:var(--accent); border-color:var(--accent); color:var(--primary-dark); }
+  .header-nav { display:flex; align-items:center; gap:28px; }
+
+  /* PAGE HERO */
+  .page-hero {
+    background:linear-gradient(135deg, var(--primary-dark), var(--primary));
+    padding:120px 0 64px; text-align:center; color:white;
+  }
+  .page-hero h1 {
+    font-family:'Noto Serif Hebrew','Noto Serif',serif;
+    font-size:clamp(2.5rem,5vw,4rem); font-weight:700; color:white; margin-bottom:16px;
+  }
+  .page-hero p { font-size:1.2rem; color:rgba(255,255,255,.75); max-width:52ch; margin:0 auto; line-height:1.7; }
+
+  /* SECTION HEADER */
+  .section-header { margin-bottom:48px; }
+  .section-header.center { text-align:center; }
+  .eyebrow {
+    display:inline-block; font-size:.75rem; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:12px;
+  }
+  .section-header h2 {
+    font-family:'Noto Serif Hebrew','Noto Serif',serif;
+    font-size:clamp(1.875rem,4vw,3rem); font-weight:700; line-height:1.2; margin-bottom:16px;
+  }
+  .section-header p { font-size:1.05rem; color:var(--text-2); line-height:1.7; max-width:65ch; }
+  .section-header.center p { margin:0 auto; }
+
+  /* HOW IT WORKS */
+  .how { background:var(--surface); }
+  .how-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .how-card {
+    background:white; border-radius:var(--radius-lg); padding:32px 28px;
+    text-align:center; box-shadow:var(--shadow-sm); border:1px solid var(--border);
+    transition:all 200ms;
+  }
+  .how-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-3px); border-color:var(--accent); }
+  .how-icon { font-size:3rem; margin-bottom:16px; display:block; }
+  .how-title { font-size:1.1rem; font-weight:700; color:var(--primary); margin-bottom:10px; }
+  .how-text { font-size:.9rem; color:var(--text-2); line-height:1.7; }
+
+  /* PROMISE */
+  .promise { background:var(--surface-alt); }
+  .promise-list { display:flex; flex-direction:column; gap:16px; }
+  .promise-item {
+    display:flex; gap:16px; padding:24px; background:white;
+    border-radius:var(--radius-lg); border-left:4px solid var(--accent);
+    box-shadow:var(--shadow-sm);
+  }
+  .promise-num {
+    flex-shrink:0; width:36px; height:36px; border-radius:50%;
+    background:var(--primary); color:white;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:.85rem;
+  }
+  .promise-text { font-size:.975rem; color:var(--text); line-height:1.8; padding-top:6px; }
+
+  /* STAGES */
+  .stages { background:var(--surface); }
+  .stages-track {
+    display:flex; align-items:flex-start; gap:0;
+    padding:32px 0; overflow-x:auto;
+  }
+  .stage {
+    flex:1; min-width:110px; text-align:center; position:relative; padding:0 8px;
+  }
+  .stage:not(:last-child)::after {
+    content:''; position:absolute; top:24px; left:60%; width:80%;
+    height:2px; background:linear-gradient(90deg, var(--accent), var(--border));
+  }
+  .stage-dot {
+    width:48px; height:48px; border-radius:50%; background:var(--primary); color:white;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:.85rem; margin:0 auto 12px;
+    position:relative; z-index:1; transition:all 200ms; cursor:default;
+  }
+  .stage:hover .stage-dot { background:var(--accent); color:var(--primary-dark); transform:scale(1.1); }
+  .stage-label { font-size:.8rem; font-weight:700; color:var(--text-2); }
+  .stage-desc { font-size:.75rem; color:var(--text-muted); line-height:1.5; margin-top:6px; padding:0 4px; }
+
+  /* BRIDGES */
+  .bridges { background:var(--surface-alt); }
+  .bridges-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .bridge-card {
+    background:white; border-radius:var(--radius-xl); padding:40px 32px;
+    text-align:center; border-bottom:4px solid var(--accent);
+    box-shadow:var(--shadow-sm); transition:all 200ms;
+  }
+  .bridge-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+  .bridge-icon { font-size:3rem; margin-bottom:16px; display:block; }
+  .bridge-title { font-size:1.3rem; font-weight:700; color:var(--primary); margin-bottom:12px; font-family:'Noto Serif Hebrew','Noto Serif',serif; }
+  .bridge-text { font-size:.9rem; color:var(--text-2); line-height:1.7; }
+
+  /* JOIN FORM */
+  .join { background:var(--surface); }
+  .form-card {
+    background:white; border-radius:var(--radius-xl); padding:clamp(2rem,5vw,4rem);
+    box-shadow:var(--shadow-lg); max-width:640px; margin:0 auto;
+    border:1px solid var(--border);
+  }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+  .form-group { margin-bottom:20px; }
+  .form-group:last-of-type { margin-bottom:28px; }
+  label { display:block; font-size:.875rem; font-weight:600; color:var(--text-2); margin-bottom:8px; }
+  input, textarea, select {
+    width:100%; padding:12px 16px; font-family:inherit; font-size:1rem;
+    color:var(--text); background:var(--surface); border:1px solid var(--border);
+    border-radius:var(--radius); transition:all 150ms; line-height:1.5;
+  }
+  input:focus, textarea:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(26,58,107,.12); }
+  textarea { resize:vertical; min-height:120px; }
+  .checkbox-label {
+    display:flex; align-items:flex-start; gap:12px; font-size:.875rem;
+    color:var(--text-2); cursor:pointer; line-height:1.6;
+  }
+  .checkbox-label input[type=checkbox] { width:18px; height:18px; flex-shrink:0; margin-top:2px; accent-color:var(--primary); cursor:pointer; }
+  .submit-btn { width:100%; margin-top:8px; }
+
+  /* BACK CTA */
+  .back-cta { background:var(--primary); text-align:center; padding:80px 0; }
+  .back-cta h2 { font-family:'Noto Serif Hebrew','Noto Serif',serif; font-size:clamp(1.8rem,3vw,2.5rem); color:white; margin-bottom:16px; }
+  .back-cta p { font-size:1.1rem; color:rgba(255,255,255,.75); max-width:50ch; margin:0 auto 32px; line-height:1.7; }
+
+  /* FOOTER */
+  .site-footer { background:var(--primary-dark); color:rgba(255,255,255,.75); padding:64px 0 32px; }
+  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:32px; margin-bottom:48px; }
+  .footer-logo-mark {
+    width:42px; height:42px; background:rgba(255,255,255,.1); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Noto Serif Hebrew',serif; font-size:18px; color:white; font-weight:700;
+    margin-bottom:16px; position:relative;
+  }
+  .footer-logo-mark::after {
+    content:''; position:absolute; width:10px; height:10px;
+    background:var(--accent); border-radius:50%; bottom:-1px; right:-1px;
+  }
+  .footer-tagline { font-size:.875rem; color:rgba(255,255,255,.55); line-height:1.7; max-width:26ch; }
+  .footer-col-title { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:white; margin-bottom:16px; }
+  .footer-links { display:flex; flex-direction:column; gap:8px; }
+  .footer-links a { font-size:.875rem; color:rgba(255,255,255,.6); transition:color 150ms; }
+  .footer-links a:hover { color:var(--accent); }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,.1); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-copy { font-size:.75rem; color:rgba(255,255,255,.35); }
+  .footer-lang .lang-btn { border-color:rgba(255,255,255,.2); color:rgba(255,255,255,.5); }
+
+  /* RESPONSIVE */
+  @media (max-width:768px) {
+    .how-grid, .bridges-grid { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .stages-track { flex-direction:column; align-items:center; gap:24px; }
+    .stage:not(:last-child)::after { display:none; }
+    .nav-list { display:none; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:480px) {
+    .footer-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">א</div>
+      <div class="logo-text">
+        <strong>Achdut B'Ahavah</strong>
+        <span>אחדות באהבה</span>
+      </div>
+    </a>
+    <div class="header-nav">
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="workshops.html" class="nav-link active">Workshops</a></li>
+      </ul>
+      <div class="lang-switch">
+        <button class="lang-btn active">EN</button>
+        <button class="lang-btn">עב</button>
+        <button class="lang-btn">RU</button>
+      </div>
+      <a href="#" class="btn btn--primary btn--sm">Donate</a>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <h1>Our Workshops</h1>
+    <p>Where change begins — one conversation at a time</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how section">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow">The Format</span>
+      <h2>How Workshops Work</h2>
+      <p>A structured, safe space for real dialogue — across every spectrum of Jewish life.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <span class="how-icon">🗓️</span>
+        <div class="how-title">Weekly Meetings</div>
+        <p class="how-text">Every week, same time, same group. Consistency builds the trust that makes real dialogue possible.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-icon">👥</span>
+        <div class="how-title">Small Groups</div>
+        <p class="how-text">Groups of 8–15 people. Small enough for every voice to be heard. Diverse enough to challenge assumptions.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-icon">📍</span>
+        <div class="how-title">100 Cities</div>
+        <p class="how-text">Growing across Israel and beyond. Find a group near you — or help us launch one in your city.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEETING PROMISE -->
+<section class="promise section">
+  <div class="container--narrow">
+    <div class="section-header center">
+      <span class="eyebrow">Our Commitment</span>
+      <h2>The Meeting Promise</h2>
+      <p>Read aloud at the opening of every workshop. These are not rules — they are our shared commitment to each other.</p>
+    </div>
+    <div class="promise-list">
+      <div class="promise-item">
+        <div class="promise-num">1</div>
+        <p class="promise-text">We meet each week with the shared commitment to listen deeply, seek to understand with empathic curiosity, and speak respectfully, before seeking to be understood.</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-num">2</div>
+        <p class="promise-text">We honour our Value Pillars, which are explained in our meeting rules guide, ensuring the unwavering emotional safety and wellbeing for all.</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-num">3</div>
+        <p class="promise-text">We start and end on time. No one speaks for more than three minutes without yielding the floor, and no one interrupts another speaker.</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-num">4</div>
+        <p class="promise-text">We distinguish facts from opinions, we challenge others through questions, and speak through personal experience only. Personal perspective is not fact.</p>
+      </div>
+      <div class="promise-item">
+        <div class="promise-num">5</div>
+        <p class="promise-text">We all agree to hold ourselves and each other accountable to these promises so that every voice can be heard, and progress toward mutual respect and understanding can be made.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGES OF ACHDUT -->
+<section class="stages section">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow">The Journey</span>
+      <h2>Achdut as a Journey</h2>
+      <p>We have identified six stages people move through in relation to others' perspectives. Where are you on the journey?</p>
+    </div>
+    <div class="stages-track">
+      <div class="stage">
+        <div class="stage-dot">1</div>
+        <div class="stage-label">Frustration</div>
+        <p class="stage-desc">Where many begin — feeling misunderstood and unheard.</p>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">2</div>
+        <div class="stage-label">Understanding</div>
+        <p class="stage-desc">Beginning to grasp why others hold their perspectives.</p>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">3</div>
+        <div class="stage-label">Appreciation</div>
+        <p class="stage-desc">Recognising the validity and depth of different views.</p>
+      </div>
+      <div class="stage">
+        <div class="stage-dot">4</div>
+        <div class="stage-label">Value</div>
+        <p class="stage-desc">Actively valuing what diversity of thought brings.</p>
+      </div>
+      <div class="stage">
+        <div class="stage-dot" style="background:var(--accent);color:var(--primary-dark)">5</div>
+        <div class="stage-label">Love</div>
+        <p class="stage-desc">Genuine affinity and care for those who see the world differently.</p>
+      </div>
+      <div class="stage">
+        <div class="stage-dot" style="background:var(--accent);color:var(--primary-dark)">6</div>
+        <div class="stage-label">Sharing</div>
+        <p class="stage-desc">Becoming an ambassador — spreading unity beyond the workshop.</p>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--text-muted);font-size:.875rem;margin-top:24px;">
+      Hover over each stage to explore. The last two stages are highlighted as aspirational milestones.
+    </p>
+  </div>
+</section>
+
+<!-- ACTIVITY BRIDGES -->
+<section class="bridges section">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow">Activity Bridges</span>
+      <h2>Doing Things Together</h2>
+      <p>Beyond conversation — shared activities tied to Israel, impact, and learning that build lasting bonds.</p>
+    </div>
+    <div class="bridges-grid">
+      <div class="bridge-card">
+        <span class="bridge-icon">🏔️</span>
+        <div class="bridge-title">Land of Israel</div>
+        <p class="bridge-text">Hiking, heritage tours, and shared experiences tied to the land we love — together.</p>
+      </div>
+      <div class="bridge-card">
+        <span class="bridge-icon">🌱</span>
+        <div class="bridge-title">Impact</div>
+        <p class="bridge-text">Volunteering and community service projects that unite participants around shared action.</p>
+      </div>
+      <div class="bridge-card">
+        <span class="bridge-icon">📖</span>
+        <div class="bridge-title">Learning</div>
+        <p class="bridge-text">Study sessions, discussions, and educational experiences exploring our shared heritage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN FORM -->
+<section class="join section" id="join">
+  <div class="container">
+    <div class="section-header center">
+      <span class="eyebrow">Take the First Step</span>
+      <h2>Reserve Your Spot</h2>
+      <p>Tell us a little about yourself and we'll connect you with the right group in your area.</p>
+    </div>
+    <div class="form-card">
+      <form>
+        <div class="form-row">
+          <div>
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" placeholder="Your full name" required>
+          </div>
+          <div>
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="+972 ...">
+          </div>
+          <div>
+            <label for="city">City / Area</label>
+            <input type="text" id="city" placeholder="e.g. Tel Aviv, Jerusalem…">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">What brings you here?</label>
+          <textarea id="message" rows="4" placeholder="Tell us a little about your story and what you're looking for…"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" required>
+            <span>I agree to receive updates from Achdut B'Ahavah. We will never share your information. &nbsp;/&nbsp; אני מסכים/ה לקבל עדכונים מאחדות באהבה.</span>
+          </label>
+        </div>
+        <button type="submit" class="btn btn--primary btn--lg submit-btn">Reserve My Spot</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- BACK TO HOME CTA -->
+<section class="back-cta">
+  <div class="container">
+    <h2>Not ready to join yet?</h2>
+    <p>Learn more about our mission, values, and the four ways to get involved.</p>
+    <a href="index.html" class="btn btn--secondary btn--lg">← Back to Home</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-mark">א</div>
+        <p class="footer-tagline">Uniting Jews across all spectrums — through mutual respect, empathic curiosity, and love.</p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,.35);margin-top:8px;">אחדות באהבה</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="workshops.html">Workshops</a>
+          <a href="#">Donate</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Get Involved</div>
+        <div class="footer-links">
+          <a href="#join">Join a Workshop</a>
+          <a href="index.html#tracks">Ambassador Program</a>
+          <a href="#">Donate</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="#">📍 Israel</a>
+          <a href="mailto:info@achdut-bahava.org">info@achdut-bahava.org</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Achdut B'Ahavah. All rights reserved.</p>
+      <div class="lang-switch footer-lang">
+        <button class="lang-btn active">EN</button>
+        <button class="lang-btn">עב</button>
+        <button class="lang-btn">RU</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
